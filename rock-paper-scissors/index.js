@@ -57,3 +57,38 @@ function playRound(playerSelection, computerSelection) {
 
   return result;
 }
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  let round = 0;
+
+  while (round < 5) {
+    const playerSelection = prompt("Rock, Paper, or Scissors")
+      .toLowerCase()
+      .trim();
+    let computerSelection = computerPlay();
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`);
+    console.log(roundResult.message);
+
+    if (roundResult.roundWinner === "Player") playerScore++;
+    if (roundResult.roundWinner === "Computer") computerScore++;
+
+    round++;
+  }
+
+  console.log(
+    `Score: \n Player: ${playerScore} Point(s)\n Computer: ${computerScore} Point(s)`
+  );
+
+  if (playerScore > computerScore) {
+    console.log("You Have Won!");
+  } else if (playerScore < computerScore) {
+    console.log("You Have Lost!");
+  } else {
+    console.log("It's a tie");
+  }
+}
+
+game();
