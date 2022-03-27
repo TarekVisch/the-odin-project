@@ -26,4 +26,19 @@ body {
   flex-direction: column;
 }
 
+.header {
+  display: flex;
+  padding: 5rem 10rem;
+}
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+}
+.header__logo__text {
+  font-family: inherit;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /*# sourceMappingURL=main.css.map */
