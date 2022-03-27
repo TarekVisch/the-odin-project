@@ -5,6 +5,10 @@
 @import "base/reset";
 @import "base/typography";
 
+// Components
+@import "components/rps-button";
+
 // Layout
 @import "layout/page";
 @import "layout/header";
+@import "layout/main";

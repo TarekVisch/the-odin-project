@@ -1,0 +1,63 @@
+.rps-button {
+  width: 130px;
+  border: 2px solid $white-100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white-100;
+    top: 100%;
+    transition: top 0.25s ease-out;
+    z-index: 1;
+  }
+
+  &:hover {
+    .rps-button__icon svg path {
+      stroke: $bg-color;
+    }
+
+    .rps-button__text {
+      color: $bg-color;
+    }
+
+    &::after {
+      top: 0;
+    }
+  }
+
+  &:nth-child(2) {
+    margin: 0px 3rem;
+  }
+
+  &__icon {
+    display: flex;
+    z-index: 2;
+  }
+
+  &:first-of-type {
+    .rps-button__icon {
+      margin-top: 16px;
+    }
+  }
+
+  &__text {
+    text-transform: uppercase;
+    font-family: $font-rubik;
+    font-weight: 500;
+    letter-spacing: 1.85px;
+    font-size: 1.85rem;
+    margin-top: 1.5rem;
+    z-index: 2;
+  }
+}
