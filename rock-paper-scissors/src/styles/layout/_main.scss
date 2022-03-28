@@ -10,12 +10,86 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     height: 70px;
 
-    h2 {
+    &__heading {
       font-weight: 400;
       font-size: 2.4rem;
+
+      // display: none;
+    }
+  }
+
+  &__round {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    p {
+      font-weight: 500;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    &__player,
+    &__computer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        font-weight: 500;
+        font-size: 3.2rem;
+
+        &:nth-child(1) {
+          margin-bottom: 20px;
+        }
+
+        &:nth-child(2) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    &__result {
+      align-self: center;
+
+      p {
+        font-size: 2.1rem;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.7;
+      }
+    }
+
+    &__rps {
+      border: 5px solid $white-100;
+      border-radius: 15px;
+      height: 150px;
+      width: 150px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--computer {
+        border-color: $accent-color;
+      }
+
+      &--rock,
+      &--paper,
+      &--scissors {
+        display: none;
+      }
     }
   }
 

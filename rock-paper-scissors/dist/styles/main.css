@@ -149,12 +149,69 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   height: 70px;
 }
-.main__header h2 {
+.main__header__heading {
   font-weight: 400;
   font-size: 2.4rem;
+}
+.main__round {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.main__round p {
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+.main__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.main__row__player, .main__row__computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main__row__player p, .main__row__computer p {
+  font-weight: 500;
+  font-size: 3.2rem;
+}
+.main__row__player p:nth-child(1), .main__row__computer p:nth-child(1) {
+  margin-bottom: 20px;
+}
+.main__row__player p:nth-child(2), .main__row__computer p:nth-child(2) {
+  margin-bottom: 20px;
+}
+.main__row__result {
+  align-self: center;
+}
+.main__row__result p {
+  font-size: 2.1rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.7;
+}
+.main__row__rps {
+  border: 5px solid #edf5e1;
+  border-radius: 15px;
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main__row__rps--computer {
+  border-color: #950740;
+}
+.main__row__rps--rock, .main__row__rps--paper, .main__row__rps--scissors {
+  display: none;
 }
 .main__rps-buttons {
   display: flex;
