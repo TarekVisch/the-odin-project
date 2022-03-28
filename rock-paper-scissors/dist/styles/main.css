@@ -72,6 +72,50 @@ body {
   z-index: 2;
 }
 
+.btn {
+  text-decoration: none;
+  border: 0;
+  background-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.btn-main {
+  display: none;
+  color: #edf5e1;
+  border: 2px solid #edf5e1;
+  padding: 15px 25px;
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 0.85px;
+  position: relative;
+  overflow: hidden;
+}
+.btn-main p {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  transition: color 0.6s ease;
+}
+.btn-main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -170%;
+  width: 150%;
+  height: 100%;
+  background-color: #edf5e1;
+  z-index: 1;
+  transform: skewX(-30deg);
+  transition: left 0.5s ease;
+}
+.btn-main:hover p {
+  color: #0f1923;
+}
+.btn-main:hover::after {
+  left: -20px;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -100,6 +144,17 @@ body {
 .main__container {
   max-width: 1000px;
   margin: 0 auto;
+}
+.main__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  height: 70px;
+}
+.main__header h2 {
+  font-weight: 400;
+  font-size: 2.4rem;
 }
 .main__rps-buttons {
   display: flex;
