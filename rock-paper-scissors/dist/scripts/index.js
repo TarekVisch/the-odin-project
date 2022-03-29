@@ -2,6 +2,20 @@ const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+let result = "";
+
+// DOM
+const mainHeadingDOM = document.getElementById("mainHeading");
+const playAgainBtn = document.getElementById("playAgainBtn");
+const rpsButtons = document.querySelectorAll(".rps-button");
+const playerScoreDOM = document.getElementById("playerScore");
+const computerScoreDOM = document.getElementById("computerScore");
+const roundDOM = document.getElementById("round");
+const resultDOM = document.getElementById("result");
+
 function computerPlay() {
   const randomNumber = Math.floor(Math.random() * 3) + 1;
   let computerSelection = "";
@@ -58,37 +72,75 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let round = 0;
+function removeIcons() {
+  let selectionIcons = document.querySelectorAll(".rps-icons");
+  selectionIcons.forEach((icon) => {
+    icon.style.display = "none";
+  });
+}
 
-  while (round < 5) {
-    const playerSelection = prompt("Rock, Paper, or Scissors")
-      .toLowerCase()
-      .trim();
-    let computerSelection = computerPlay();
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`);
-    console.log(roundResult.message);
-
-    if (roundResult.roundWinner === "Player") playerScore++;
-    if (roundResult.roundWinner === "Computer") computerScore++;
-
-    round++;
-  }
-
-  console.log(
-    `Score: \n Player: ${playerScore} Point(s)\n Computer: ${computerScore} Point(s)`
+function game(playerSelection, computerSelection) {
+  let currentPlayerSelectionIconDOM = document.querySelector(
+    `div[data-player=${playerSelection}]`
+  );
+  let currentComputerSelectionIconDOM = document.querySelector(
+    `div[data-computer=${computerSelection}]`
   );
 
-  if (playerScore > computerScore) {
-    console.log("You Have Won!");
-  } else if (playerScore < computerScore) {
-    console.log("You Have Lost!");
-  } else {
-    console.log("It's a tie");
+  removeIcons();
+  currentPlayerSelectionIconDOM.style.display = "block";
+  currentComputerSelectionIconDOM.style.display = "block";
+
+  let roundResult = playRound(playerSelection, computerSelection);
+  resultDOM.textContent = roundResult.message;
+
+  if (roundResult.roundWinner === "Player") playerScore++;
+  if (roundResult.roundWinner === "Computer") computerScore++;
+
+  round++;
+
+  playerScoreDOM.textContent = playerScore;
+  computerScoreDOM.textContent = computerScore;
+  roundDOM.textContent = `Round ${round}`;
+
+  if (playerScore >= 5 || computerScore >= 5) {
+    mainHeading.style.display = "none";
+    playAgainBtn.style.display = "block";
+
+    if (playerScore >= 5) {
+      resultDOM.textContent = "Game Over. You Win!";
+    }
+
+    if (computerScore >= 5) {
+      resultDOM.textContent = "Game Over. You Loose!";
+    }
   }
 }
 
-// game();
+rpsButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (playerScore == 5 || computerScore == 5) {
+      return;
+    }
+
+    const playerSelection = e.currentTarget.id;
+    const computerSelection = computerPlay();
+
+    game(playerSelection, computerSelection);
+  });
+});
+
+playAgainBtn.addEventListener("click", (e) => {
+  playerScore = 0;
+  computerScore = 0;
+  round = 0;
+  result = "";
+
+  removeIcons();
+  roundDOM.textContent = "VS";
+  playerScoreDOM.textContent = 0;
+  computerScoreDOM.textContent = 0;
+  resultDOM.textContent = "";
+  mainHeading.style.display = "block";
+  playAgainBtn.style.display = "none";
+});
